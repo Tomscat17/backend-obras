@@ -70,8 +70,8 @@ app.post('/generar-excel', async (req, res) => {
       hoja.getCell('R' + (filaBase + 10)).value = bocaSalida.descripcion;
 
       // Observación si corresponde
-      if (obsCelda && obra.observacion) {
-        hoja.getCell(obsCelda).value = obra.observacion;
+      if (obsCelda && obra.observaciones) {
+        hoja.getCell(obsCelda).value = obra.observaciones;
       }
     };
 
