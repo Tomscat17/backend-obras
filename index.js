@@ -16,7 +16,8 @@ app.post('/generar-excel', async (req, res) => {
     const workbook = new ExcelJS.Workbook();
     const templatePath = path.join(__dirname, 'plantilla', '08_M_OATransv (1).xlsx');
     await workbook.xlsx.readFile(templatePath);
-    const hoja = workbook.getWorksheet('OA-1');
+    console.log('Hojas disponibles en el Excel:', workbook.worksheets.map(h => h.name));
+    const hoja = workbook.getWorksheet('OA-1 ');
 
     // --- DATOS GENERALES ---
     hoja.getCell('C3').value = datos.ruta;
