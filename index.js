@@ -13,7 +13,7 @@ app.use(express.json({ limit: '20mb' }));
 app.post('/generar-excel', async (req, res) => {
   try {
     const datos = req.body;
-    console.log('🔍 deDm:', datos.deDm, 'aDm:', datos.aDm);
+    console.log('🔍 deDm:', datos.datosGenerales?.deDm, 'aDm:', datos.datosGenerales?.aDm);
 
     const workbook = new ExcelJS.Workbook();
     const templatePath = path.join(__dirname, 'plantilla', '08_M_OATransv (1).xlsx');
@@ -24,9 +24,9 @@ app.post('/generar-excel', async (req, res) => {
     // --- DATOS GENERALES ---
     hoja.getCell('C3').value = datos.ruta;
     hoja.getCell('C4').value = datos.sector;
-    hoja.getCell('O3').value = datos.deDm;
+    hoja.getCell('O3').value = datos.datosGenerales?.deDm || '';
     hoja.getCell('P3').value = ''; // P3 vacío si es sólo una celda de muestra
-    hoja.getCell('O4').value = datos.aDm;
+    hoja.getCell('O4').value = datos.datosGenerales?.aDm || '';
     hoja.getCell('P4').value = '';
 
     const mapObra = (obra, filaBase, bocaEntrada, bocaSalida, obsCelda) => {
