@@ -13,6 +13,8 @@ app.use(express.json({ limit: '20mb' }));
 app.post('/generar-excel', async (req, res) => {
   try {
     const datos = req.body;
+    console.log('🔍 deDm:', datos.deDm, 'aDm:', datos.aDm);
+
     const workbook = new ExcelJS.Workbook();
     const templatePath = path.join(__dirname, 'plantilla', '08_M_OATransv (1).xlsx');
     await workbook.xlsx.readFile(templatePath);
