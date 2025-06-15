@@ -22,9 +22,9 @@ app.post('/generar-excel', async (req, res) => {
     // --- DATOS GENERALES ---
     hoja.getCell('C3').value = datos.ruta;
     hoja.getCell('C4').value = datos.sector;
-    hoja.getCell('O3').value = datos.datosGenerales.deDm;
+    hoja.getCell('O3').value = datos.deDm;
     hoja.getCell('P3').value = ''; // P3 vacío si es sólo una celda de muestra
-    hoja.getCell('O4').value = datos.datosGenerales.aDm;
+    hoja.getCell('O4').value = datos.aDm;
     hoja.getCell('P4').value = '';
 
     const mapObra = (obra, filaBase, bocaEntrada, bocaSalida, obsCelda) => {
